@@ -1,7 +1,7 @@
 extends CanvasLayer
 signal menu_pressed
 
-var leaderboard_save_file = "user://leaderboard.save"
+const leaderboard_save_file = "user://leaderboard.save"
 
 var has_loaded_comp_list:bool = false
 
@@ -14,6 +14,7 @@ var score:
 func _ready() -> void:
 	$ScrollContainer/GridContainer/NameHeader/PanelContainer/Label.text = "Name"
 	$ScrollContainer/GridContainer/ScoreHeader/PanelContainer/Label.text = "Score"
+	$ScrollContainer/GridContainer/RankHeader/PanelContainer/Label.text = "Rank"
 	get_tree().call_group("CompList", "hide")
 	pass # Replace with function body.
 
@@ -68,14 +69,19 @@ func load_competitors_data_and_grid() -> void:
 		
 	var list_of_competitors = get_competitors()	
 	
-	for comp in list_of_competitors:
+	for i in range(list_of_competitors.size()):
 		var label_for_name = preload("res://interface/list_label.tscn").instantiate()
 		var label_for_score = preload("res://interface/list_label.tscn").instantiate()
+		var label_for_rank = preload("res://interface/list_label.tscn").instantiate()
 		var grid_container = $ScrollContainer/GridContainer
+		var curr = list_of_competitors[i]
+		grid_container.add_child(label_for_rank)
 		grid_container.add_child(label_for_name)
 		grid_container.add_child(label_for_score)
-		label_for_name.set_item_label(comp[0])
-		label_for_score.set_item_label(comp[1])
+		
+		label_for_rank.set_item_label(str(i + 1))
+		label_for_name.set_item_label(curr[0])
+		label_for_score.set_item_label(curr[1])
 		
 	# if we loaded the children successfully, toggle state variable so we don't redo the work
 	if $ScrollContainer/GridContainer.get_children().size() > 0:

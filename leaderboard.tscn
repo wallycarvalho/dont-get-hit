@@ -2,12 +2,26 @@
 
 [ext_resource type="Script" uid="uid://cdk3tiat2ljbv" path="res://leaderboard.gd" id="1_3ilyb"]
 [ext_resource type="PackedScene" uid="uid://b14cmktgclc30" path="res://interface/header_title.tscn" id="2_oli24"]
+[ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="2_y1kwj"]
+[ext_resource type="Texture2D" uid="uid://rl1vpcmaanh3" path="res://art/arrow_left.tres" id="4_y1kwj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oli24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y1kwj")
+}],
+"loop": true,
+"name": &"back_arrow",
+"speed": 5.0
+}]
 
 [node name="Leaderboard" type="CanvasLayer" unique_id=239119394]
 script = ExtResource("1_3ilyb")
 
 [node name="BackButton" type="Button" parent="." unique_id=949128794]
-offset_right = 80.0
+offset_left = 52.0
+offset_right = 132.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 24
 text = "Menu"
@@ -28,12 +42,17 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Type your name..."
 
 [node name="SaveButton" type="Button" parent="." unique_id=842264773 groups=["save_group"]]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_bottom = 42.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -80.0
+offset_right = 40.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "Save"
 
@@ -43,33 +62,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.5
-offset_top = -291.0
-offset_right = 96.5
-offset_bottom = -257.0
+offset_left = -104.0
+offset_top = -236.0
+offset_right = 111.0
+offset_bottom = -202.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_y1kwj")
 theme_override_font_sizes/font_size = 24
 text = "Top Competitors"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1722391556 groups=["CompList"]]
-offset_top = 257.0
+offset_top = 215.0
 offset_right = 480.0
-offset_bottom = 720.0
+offset_bottom = 678.0
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=786406963 groups=["CompList"]]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/h_separation = 8
-columns = 2
+columns = 3
 
-[node name="NameHeader" parent="ScrollContainer/GridContainer" unique_id=589552171 instance=ExtResource("2_oli24")]
+[node name="RankHeader" parent="ScrollContainer/GridContainer" unique_id=589552171 instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="NameHeader" parent="ScrollContainer/GridContainer" unique_id=1387631028 instance=ExtResource("2_oli24")]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ScoreHeader" parent="ScrollContainer/GridContainer" unique_id=162760959 instance=ExtResource("2_oli24")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=618164414]
+position = Vector2(32.000004, 21.000002)
+scale = Vector2(0.265, 0.252)
+sprite_frames = SubResource("SpriteFrames_oli24")
+animation = &"back_arrow"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_pressed"]
