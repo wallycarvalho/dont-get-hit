@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://bgmx8ot0ymxq"]
+
+[ext_resource type="FontFile" uid="uid://wb0gtj4ho3w6" path="res://fonts/Showpop.ttf" id="1_htd6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htd6s"]
+bg_color = Color(0.63438493, 0.5037033, 0.9577833, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+Label/colors/font_color = Color(0.91228896, 0.9122889, 0.91228884, 1)
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_htd6s")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_htd6s")

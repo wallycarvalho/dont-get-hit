@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b14cmktgclc30"]
+
+[ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="1_mdj7w"]
+[ext_resource type="Script" uid="uid://b5bswg8oe4x10" path="res://interface/header_title.gd" id="1_sheub"]
+
+[node name="Control" type="Control" unique_id=589552171]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -216.0
+offset_bottom = -681.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mdj7w")
+script = ExtResource("1_sheub")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1185727497]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.0
+offset_right = 100.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=1890937481]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Header Title"

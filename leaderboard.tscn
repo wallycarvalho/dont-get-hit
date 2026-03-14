@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://det68a354a1lg"]
+
+[ext_resource type="Script" uid="uid://cdk3tiat2ljbv" path="res://leaderboard.gd" id="1_3ilyb"]
+[ext_resource type="PackedScene" uid="uid://b14cmktgclc30" path="res://interface/header_title.tscn" id="2_oli24"]
+
+[node name="Leaderboard" type="CanvasLayer" unique_id=239119394]
+script = ExtResource("1_3ilyb")
+
+[node name="BackButton" type="Button" parent="." unique_id=949128794]
+offset_right = 80.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+text = "Menu"
+
+[node name="PlayerEdit" type="TextEdit" parent="." unique_id=684450967 groups=["save_group"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -240.0
+offset_right = 156.5
+offset_bottom = -144.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Type your name..."
+
+[node name="SaveButton" type="Button" parent="." unique_id=842264773 groups=["save_group"]]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Save"
+
+[node name="Title" type="Label" parent="." unique_id=2091302774 groups=["CompList"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.5
+offset_top = -291.0
+offset_right = 96.5
+offset_bottom = -257.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Top Competitors"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1722391556 groups=["CompList"]]
+offset_top = 257.0
+offset_right = 480.0
+offset_bottom = 720.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=786406963 groups=["CompList"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+columns = 2
+
+[node name="NameHeader" parent="ScrollContainer/GridContainer" unique_id=589552171 instance=ExtResource("2_oli24")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreHeader" parent="ScrollContainer/GridContainer" unique_id=162760959 instance=ExtResource("2_oli24")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_pressed"]
