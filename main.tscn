@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cadv6431k6lmi" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bq2lrqwfge6fc" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://d2hpwjonb5pte" path="res://mob.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://d3x4m8cvg7wy" path="res://menu.tscn" id="3_menu"]
 [ext_resource type="PackedScene" uid="uid://blrxdtskv51gt" path="res://hud.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://det68a354a1lg" path="res://leaderboard.tscn" id="5_7mycd"]
 [ext_resource type="AudioStream" uid="uid://dhvk34e70eme4" path="res://art/gameover.wav" id="6_272bh"]
@@ -40,7 +41,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.20070747, 0.48492122, 0.75368965, 1)
+color = Color(0.25, 0.15, 0.35, 1)
+
+[node name="Menu" parent="." unique_id=1234567891 instance=ExtResource("3_menu")]
 
 [node name="Player" parent="." unique_id=2011695070 instance=ExtResource("1_ig7tw")]
 
@@ -74,9 +77,10 @@ stream = SubResource("AudioStreamOggVorbis_lquwl")
 stream = ExtResource("6_272bh")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="show_leaderboard" from="HUD" to="." method="show_leaderboard"]
+[connection signal="start_game" from="Menu" to="." method="new_game"]
+[connection signal="show_leaderboard" from="Menu" to="." method="show_leaderboard"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
-[connection signal="menu_pressed" from="Leaderboard" to="." method="show_main_screen"]
+[connection signal="menu_pressed" from="Leaderboard" to="." method="show_menu"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

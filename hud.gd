@@ -1,10 +1,9 @@
 extends CanvasLayer
 signal start_game
-signal show_leaderboard
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,7 +18,7 @@ func show_game_over() -> void:
 	show_message("game over")
 	await $MessageTimer.timeout
 	
-	$Message.text = "Dodge the creeps!"
+	$Message.text = "Don't Get Hit!"
 	$Message.show()
 	
 	await get_tree().create_timer(1.0).timeout
@@ -33,7 +32,4 @@ func _on_start_button_pressed() -> void:
 	start_game.emit()
 
 func _on_message_timer_timeout() -> void:
-	$Message.hide()	
-
-func _on_leaderboard_button_pressed() -> void:
-	show_leaderboard.emit()
+	$Message.hide()
