@@ -2,6 +2,26 @@
 
 [ext_resource type="FontFile" uid="uid://wb0gtj4ho3w6" path="res://fonts/Showpop.ttf" id="1_htd6s"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vh72b"]
+bg_color = Color(0.76314855, 0.446239, 0.88616264, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2uih"]
+bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
+border_width_bottom = 4
+border_color = Color(0.80803424, 0.38536167, 0.8096021, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htd6s"]
 bg_color = Color(0.63438493, 0.5037033, 0.9577833, 1)
 border_width_left = 3
@@ -16,6 +36,10 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
+Button/colors/font_color = Color(0.7259005, 0.43159452, 0.90657765, 1)
+Button/fonts/font = ExtResource("1_htd6s")
+Button/styles/hover = SubResource("StyleBoxFlat_vh72b")
+Button/styles/normal = SubResource("StyleBoxFlat_q2uih")
 Label/colors/font_color = Color(0.91228896, 0.9122889, 0.91228884, 1)
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_htd6s")

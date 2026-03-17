@@ -5,6 +5,28 @@
 [ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="2_y1kwj"]
 [ext_resource type="Texture2D" uid="uid://rl1vpcmaanh3" path="res://art/arrow_left.tres" id="4_y1kwj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1kwj"]
+bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
+border_width_bottom = 4
+border_color = Color(0.80803424, 0.38536167, 0.8096021, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 28.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjw78"]
+bg_color = Color(0.76314855, 0.446239, 0.88616264, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 28.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oli24"]
 animations = [{
 "frames": [{
@@ -20,11 +42,24 @@ animations = [{
 script = ExtResource("1_3ilyb")
 
 [node name="BackButton" type="Button" parent="." unique_id=949128794]
-offset_left = 52.0
-offset_right = 132.0
-offset_bottom = 42.0
+offset_left = 35.0
+offset_top = 3.0
+offset_right = 109.0
+offset_bottom = 45.0
+theme = ExtResource("2_y1kwj")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_y1kwj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qjw78")
 text = "Menu"
+
+[node name="Icon" type="TextureRect" parent="BackButton" unique_id=1041950737]
+layout_mode = 0
+offset_left = -23.0
+offset_top = 10.0
+offset_right = 114.0
+offset_bottom = 151.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_y1kwj")
 
 [node name="PlayerEdit" type="TextEdit" parent="." unique_id=684450967 groups=["save_group"]]
 anchors_preset = 8
@@ -72,32 +107,46 @@ theme = ExtResource("2_y1kwj")
 theme_override_font_sizes/font_size = 24
 text = "Top Competitors"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1722391556 groups=["CompList"]]
-offset_top = 215.0
-offset_right = 480.0
-offset_bottom = 678.0
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=786406963 groups=["CompList"]]
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 3
-
-[node name="RankHeader" parent="ScrollContainer/GridContainer" unique_id=589552171 instance=ExtResource("2_oli24")]
-layout_mode = 2
-
-[node name="NameHeader" parent="ScrollContainer/GridContainer" unique_id=1387631028 instance=ExtResource("2_oli24")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScoreHeader" parent="ScrollContainer/GridContainer" unique_id=162760959 instance=ExtResource("2_oli24")]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=618164414]
+visible = false
 position = Vector2(32.000004, 21.000002)
 scale = Vector2(0.265, 0.252)
 sprite_frames = SubResource("SpriteFrames_oli24")
 animation = &"back_arrow"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=475519184]
+offset_top = 245.0
+offset_right = 480.0
+offset_bottom = 720.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1573369898]
+layout_mode = 2
+
+[node name="HeaderGridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer" unique_id=1354828527 groups=["CompList"]]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="RankHeader" parent="VBoxContainer/HBoxContainer/HeaderGridContainer" unique_id=589552171 instance=ExtResource("2_oli24")]
+layout_mode = 2
+
+[node name="NameHeader" parent="VBoxContainer/HBoxContainer/HeaderGridContainer" unique_id=1125815923 instance=ExtResource("2_oli24")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreHeader" parent="VBoxContainer/HBoxContainer/HeaderGridContainer" unique_id=2133930381 instance=ExtResource("2_oli24")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1722391556 groups=["CompList"]]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer" unique_id=786406963 groups=["CompList"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_pressed"]

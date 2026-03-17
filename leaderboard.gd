@@ -12,9 +12,10 @@ var score:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ScrollContainer/GridContainer/NameHeader/PanelContainer/Label.text = "Name"
-	$ScrollContainer/GridContainer/ScoreHeader/PanelContainer/Label.text = "Score"
-	$ScrollContainer/GridContainer/RankHeader/PanelContainer/Label.text = "Rank"
+	$VBoxContainer/HBoxContainer/HeaderGridContainer/NameHeader/PanelContainer/Label.text = "Name"
+	$VBoxContainer/HBoxContainer/HeaderGridContainer/ScoreHeader/PanelContainer/Label.text = "Score"
+	$VBoxContainer/HBoxContainer/HeaderGridContainer/RankHeader/PanelContainer/Label.text = "Rank"
+	
 	get_tree().call_group("CompList", "hide")
 	pass # Replace with function body.
 
@@ -73,8 +74,9 @@ func load_competitors_data_and_grid() -> void:
 		var label_for_name = preload("res://interface/list_label.tscn").instantiate()
 		var label_for_score = preload("res://interface/list_label.tscn").instantiate()
 		var label_for_rank = preload("res://interface/list_label.tscn").instantiate()
-		var grid_container = $ScrollContainer/GridContainer
+		var grid_container = $VBoxContainer/ScrollContainer/GridContainer
 		var curr = list_of_competitors[i]
+		
 		grid_container.add_child(label_for_rank)
 		grid_container.add_child(label_for_name)
 		grid_container.add_child(label_for_score)
@@ -83,8 +85,11 @@ func load_competitors_data_and_grid() -> void:
 		label_for_name.set_item_label(curr[0])
 		label_for_score.set_item_label(curr[1])
 		
-	# if we loaded the children successfully, toggle state variable so we don't redo the work
-	if $ScrollContainer/GridContainer.get_children().size() > 0:
+		label_for_name.set_hor_size_flags(Control.SIZE_EXPAND_FILL)
+		label_for_score.set_hor_size_flags(Control.SIZE_EXPAND_FILL)
+		
+	# ifwe loaded the children successfully, toggle state variable so we don't redo the work
+	if $VBoxContainer/ScrollContainer/GridContainer.get_children().size() > 0:
 		has_loaded_comp_list = true
 		
 	
