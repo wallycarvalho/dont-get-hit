@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cxyefl2mrv5ew"]
+
+[ext_resource type="Script" uid="uid://dpbfbs1niokpf" path="res://menu.gd" id="1_menu"]
+[ext_resource type="FontFile" uid="uid://djwrv5oc6n8s" path="res://fonts/Xolonium-Regular.ttf" id="2_font"]
+[ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="3_theme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
+border_width_bottom = 4
+border_color = Color(0.80803424, 0.38536167, 0.8096021, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.76314855, 0.446239, 0.88616264, 1)
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Menu" type="CanvasLayer" unique_id=1320010347]
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=769391934]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.15, 0.35, 1)
+
+[node name="Title" type="Label" parent="." unique_id=1127693394]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -319.0
+offset_right = 199.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 56
+text = "Don't Get Hit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=534404126]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=302180581]
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+text = "New Game"
+
+[node name="LeaderboardButton" type="Button" parent="VBoxContainer" unique_id=1896523160]
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+text = "Leaderboard"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1159302539]
+layout_mode = 2
+theme = ExtResource("3_theme")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaderboardButton" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

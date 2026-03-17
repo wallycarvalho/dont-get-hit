@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b14cmktgclc30" path="res://interface/header_title.tscn" id="2_oli24"]
 [ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="2_y1kwj"]
 [ext_resource type="Texture2D" uid="uid://rl1vpcmaanh3" path="res://art/arrow_left.tres" id="4_y1kwj"]
+[ext_resource type="Script" uid="uid://b8iy75gvtv0na" path="res://title_bounce.gd" id="5_title"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1kwj"]
 bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
@@ -27,6 +28,20 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 expand_margin_left = 28.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title"]
+bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
+border_width_bottom = 4
+border_color = Color(0.80803424, 0.38536167, 0.8096021, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_oli24"]
 animations = [{
 "frames": [{
@@ -40,6 +55,14 @@ animations = [{
 
 [node name="Leaderboard" type="CanvasLayer" unique_id=239119394]
 script = ExtResource("1_3ilyb")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1234567890]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.15, 0.35, 1)
 
 [node name="BackButton" type="Button" parent="." unique_id=949128794]
 offset_left = 35.0
@@ -82,30 +105,48 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -80.0
-offset_right = 40.0
-offset_bottom = -38.0
+offset_left = -41.0
+offset_top = -134.0
+offset_right = 39.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_y1kwj")
 theme_override_font_sizes/font_size = 24
 text = "Save"
 
-[node name="Title" type="Label" parent="." unique_id=2091302774 groups=["CompList"]]
+[node name="Title" type="Panel" parent="." unique_id=2091302774 groups=["CompList"]]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.5
+offset_top = 180.0
+offset_right = 107.5
+offset_bottom = 214.0
+grow_horizontal = 2
+theme = ExtResource("2_y1kwj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_title")
+script = ExtResource("5_title")
+
+[node name="Label" type="Label" parent="Title" unique_id=2091302775]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = -236.0
-offset_right = 111.0
-offset_bottom = -202.0
+offset_left = -107.5
+offset_top = -14.5
+offset_right = 107.5
+offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_y1kwj")
+theme_override_colors/font_color = Color(0.7254902, 0.43137255, 0.90588236, 1)
 theme_override_font_sizes/font_size = 24
 text = "Top Competitors"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=618164414]
 visible = false
@@ -115,9 +156,18 @@ sprite_frames = SubResource("SpriteFrames_oli24")
 animation = &"back_arrow"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=475519184]
-offset_top = 245.0
-offset_right = 480.0
-offset_bottom = 720.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -87.0
+offset_right = 230.0
+offset_bottom = 357.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1573369898]
 layout_mode = 2

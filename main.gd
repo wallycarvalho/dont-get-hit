@@ -2,9 +2,13 @@ extends Node
 
 @export var mob_scene: PackedScene
 var score
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Leaderboard.hide()	
+	# Show menu at startup, hide game UI
+	$Menu.show()
+	$HUD.hide()
+	$Leaderboard.hide()
 
 	$Background.volume_db = -25
 	$Background.play()
@@ -19,11 +23,14 @@ func new_game() -> void:
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	
+	# Hide menu and leaderboard, show HUD
+	$Menu.hide()
+	$Leaderboard.hide()
+	$HUD.show()
+	
 	# HUD portion
 	$HUD.update_score(score)
 	$HUD.show_message("Starting game")
-	# hide leaderboard button
-	$HUD/LeaderboardButton.hide()
 	
 	# Music
 	$Background.volume_db = 0
@@ -69,17 +76,17 @@ func save_game():
 
 func show_leaderboard() -> void:
 	"""
-	This can be improved by handling the variables better so we call only one variable instead of showing
-	ledaerboard + the associated group
+	Hide menu/HUD and show the leaderboard with competitor list
 	"""
+	$Menu.hide()
 	$HUD.hide()
 	$Leaderboard.show()
 	$Leaderboard.show_comp_list()
 	
-func show_main_screen() -> void:
-	$HUD.show()
-	$HUD/LeaderboardButton.show()
+func show_menu() -> void:
+	$HUD.hide()
 	$Leaderboard.hide()
+	$Menu.show()
 
 func _on_mob_timer_timeout() -> void:
 	# first instantiate the mob
