@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b14cmktgclc30" path="res://interface/header_title.tscn" id="2_oli24"]
 [ext_resource type="Theme" uid="uid://bgmx8ot0ymxq" path="res://interface/base_theme.tres" id="2_y1kwj"]
 [ext_resource type="Texture2D" uid="uid://rl1vpcmaanh3" path="res://art/arrow_left.tres" id="4_y1kwj"]
-[ext_resource type="Script" uid="uid://b8iy75gvtv0na" path="res://title_bounce.gd" id="5_title"]
+[ext_resource type="Script" path="res://title_bounce.gd" id="5_title"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1kwj"]
 bg_color = Color(0.98472995, 0.9789023, 0.999561, 1)
